@@ -24,9 +24,10 @@ public class BookAppApplication {
             @Override
             public void run(String... args) throws Exception {
                 Book book = new Book();
-                book.setTitle("Ракета на чотирьох лапах ");
-                book.setAuthor("Джеремі Стронґ");
-                book.setDescription("книга про пригоди");
+                book.setTitle("Warren & Dragon 100 Friends");
+                book.setAuthor("Ariel Bernstein");
+                book.setDescription("a boy and his \"pet\" "
+                        + "dragon take on a new school and attempt to make 100 friends!");
                 book.setPrice(BigDecimal.valueOf(45));
                 book.setCoverImage("");
                 book.setIsbn("");
