@@ -1,17 +1,15 @@
 package org.example.bookapp.service;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.example.bookapp.model.Book;
 import org.example.bookapp.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
-
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     @Override
     public Book save(Book book) {

@@ -1,6 +1,7 @@
 package org.example.bookapp.repository;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.example.bookapp.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,12 +9,9 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class BookRepositoryImpl implements BookRepository {
     private final SessionFactory sessionFactory;
-
-    public BookRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     @Override
     public Book save(Book book) {
