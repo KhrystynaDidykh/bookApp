@@ -10,34 +10,22 @@ import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Long id;
-    @Getter
-    @Setter
     @Column(nullable = false)
     private String title;
-    @Getter
-    @Setter
     @Column(nullable = false)
     private String author;
-    @Getter
-    @Setter
     @Column(unique = true, nullable = false)
     private String isbn;
-    @Getter
-    @Setter
     @Column(nullable = false)
     private BigDecimal price;
-    @Getter
-    @Setter
     private String description;
-    @Getter
-    @Setter
     private String coverImage;
 }
