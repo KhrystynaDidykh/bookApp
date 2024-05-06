@@ -1,35 +1,21 @@
-package org.example.bookapp.model;
+package org.example.bookapp.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookDto {
     private Long id;
-    @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
     private String author;
-    @Column(unique = true, nullable = false)
     private String isbn;
-    @Column(nullable = false)
     private BigDecimal price;
     private String description;
     private String coverImage;
 
-    public Book() {
+    public BookDto() {
     }
 
-    public Book(Long id, String title, String author,
-                String isbn, BigDecimal price, String description, String coverImage) {
+    public BookDto(Long id, String title, String author,
+                   String isbn, BigDecimal price, String description, String coverImage) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -95,3 +81,4 @@ public class Book {
         this.coverImage = coverImage;
     }
 }
+
