@@ -5,16 +5,14 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.example.bookapp.model.Book;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class BookRepositoryImpl implements BookRepository {
     private final EntityManagerFactory entityManagerFactory;
-
-    public BookRepositoryImpl(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
-    }
 
     @Override
     public Book save(Book book) {
