@@ -38,10 +38,10 @@ databaseChangeLog:
                   name: description
                   type: varchar(255)
               - column:
-                  name: cover-image
+                  name: cover_image
                   type: varchar(255)
               - column:
-                  name: is deleted
+                  name: is_deleted
                   type: boolean
                   defaultValueBoolean: false
                   constraints:
