@@ -2,6 +2,7 @@ package org.example.bookapp.controller;
 
 import java.util.List;
 import org.example.bookapp.dto.BookDto;
+import org.example.bookapp.dto.BookSearchParameters;
 import org.example.bookapp.dto.CreateBookRequestDto;
 import org.example.bookapp.service.BookService;
 import org.springframework.http.HttpStatus;
@@ -49,5 +50,10 @@ public class BookController {
     @PutMapping("/{id}")
     public BookDto updateById(@PathVariable Long id, @RequestBody CreateBookRequestDto bookDto) {
         return bookService.updateBookById(id, bookDto);
+    }
+
+    @GetMapping("/search")
+    public List<BookDto> search(BookSearchParameters bookSearchParameters) {
+        return bookService.search(bookSearchParameters);
     }
 }
