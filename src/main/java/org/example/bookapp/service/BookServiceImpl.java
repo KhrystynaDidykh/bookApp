@@ -2,8 +2,6 @@ package org.example.bookapp.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.example.bookapp.dto.BookDto;
 import org.example.bookapp.dto.CreateBookRequestDto;
@@ -26,9 +24,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findAll() {
-        return (List<BookDto>) bookRepository.findAll().stream()
-                .map((Function<Book, BookDto>) bookMapper::toDto)
-                .collect(Collectors.toList());
+        return bookRepository.findAll().stream()
+                .map(bookMapper::toDto)
+                .toList();
 
     }
 
@@ -39,5 +37,20 @@ public class BookServiceImpl implements BookService {
                         + id)
         );
         return bookMapper.toDto(book);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    @Override
+    public BookDto updateBookById(Long id, CreateBookRequestDto bookDto) {
+        Book bookFromDb = bookRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Can't get book with id: " + id)
+        );
+        bookMapper.updateBookFromDto(bookDto, bookFromDb);
+        Book updatedBook = bookRepository.save(bookFromDb);
+        return bookMapper.toDto(updatedBook);
     }
 }

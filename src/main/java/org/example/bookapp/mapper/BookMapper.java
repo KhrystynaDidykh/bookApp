@@ -5,6 +5,7 @@ import org.example.bookapp.dto.BookDto;
 import org.example.bookapp.dto.CreateBookRequestDto;
 import org.example.bookapp.model.Book;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,4 +14,6 @@ public interface BookMapper {
     BookDto toDto(Book book);
 
     Book toModel(CreateBookRequestDto createBookRequestDto);
+
+    void updateBookFromDto(CreateBookRequestDto bookDto, @MappingTarget Book book);
 }
