@@ -8,17 +8,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class SpecificationProviderManagerImpl implements SpecificationProviderManager<Book> {
-    private List<SpecificationProvider<Book>> specificationProviders;
+    private List<SpecificationProvider<Book>> bookSpecificationProviders;
 
     @Override
     public SpecificationProvider<Book> getSpecification(String key) {
-        return specificationProviders.stream()
+        return bookSpecificationProviders.stream()
                 .filter(p -> p.getKey().equals(key))
                 .findFirst()
                 .orElseThrow(() ->
                         new RuntimeException("Can't find correct specification provider for key "
                                 + key));
-
     }
 }
 

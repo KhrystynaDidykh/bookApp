@@ -72,6 +72,12 @@
             <artifactId>liquibase-maven-plugin</artifactId>
             <version>${liquibase.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

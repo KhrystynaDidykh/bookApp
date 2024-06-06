@@ -8,10 +8,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AuthorSpecificationProvider implements SpecificationProvider<Book> {
+    private static final String FIRSTPARAM = "author";
 
     @Override
     public String getKey() {
-        return "author";
+        return FIRSTPARAM;
     }
 
     public Specification<Book> getSpecification(String[] params) {
