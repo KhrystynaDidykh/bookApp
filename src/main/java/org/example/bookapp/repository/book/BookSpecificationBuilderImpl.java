@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class BookSpecificationBuilderImpl implements BookSpecificationBuilder<Book> {
-    private static final String FIRSTPARAM = "author";
-    private static final String SECONDPARAM = "title";
+    private static final String AUTHOR_PARAM = "author";
+    private static final String TITLE_PARAM = "title";
     private SpecificationProviderManager<Book> specificationProviderManager;
 
     @Override
@@ -19,12 +19,12 @@ public class BookSpecificationBuilderImpl implements BookSpecificationBuilder<Bo
         Specification<Book> specification = Specification.where(null);
         if (bookSearchParameters.authors() != null && bookSearchParameters.authors().length > 0) {
             specification = specification
-                    .and(specificationProviderManager.getSpecification(FIRSTPARAM)
+                    .and(specificationProviderManager.getSpecification(AUTHOR_PARAM)
                             .getSpecification(bookSearchParameters.authors()));
         }
         if (bookSearchParameters.titles() != null && bookSearchParameters.titles().length > 0) {
             specification = specification
-                    .and(specificationProviderManager.getSpecification(SECONDPARAM)
+                    .and(specificationProviderManager.getSpecification(TITLE_PARAM)
                             .getSpecification(bookSearchParameters.titles()));
         }
         return specification;
